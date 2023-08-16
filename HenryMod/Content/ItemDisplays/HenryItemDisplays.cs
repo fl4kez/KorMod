@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HenryMod.Modules.Characters
+namespace KorMod.Modules.Characters
 {
-    internal class HenryItemDisplays : ItemDisplaysBase
+    internal class KorItemDisplays : ItemDisplaysBase
     {
         protected override void SetItemDisplayRules(List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules)
         {

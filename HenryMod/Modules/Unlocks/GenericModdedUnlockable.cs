@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using R2API;
 
-namespace HenryMod.Modules
+namespace KorMod.Modules
 {
     public abstract class GenericModdedUnlockable : ModdedUnlockable
     {

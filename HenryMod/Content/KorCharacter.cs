@@ -8,24 +8,24 @@ using UnityEngine;
 
 namespace KorMod.Modules.Survivors
 {
-    internal class MyCharacter : SurvivorBase
+    internal class KorCharacter : SurvivorBase
     {
         //used when building your character using the prefabs you set up in unity
         //don't upload to thunderstore without changing this
-        public override string prefabBodyName => "Henry";
+        public override string prefabBodyName => "Kor";
 
-        public const string HENRY_PREFIX = KorPlugin.DEVELOPER_PREFIX + "_HENRY_BODY_";
+        public const string KOR_PREFIX = KorPlugin.DEVELOPER_PREFIX + "_KOR_BODY_";
 
         //used when registering your survivor's language tokens
-        public override string survivorTokenPrefix => HENRY_PREFIX;
+        public override string survivorTokenPrefix => KOR_PREFIX;
 
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            bodyName = "HenryTutorialBody",
-            bodyNameToken = HENRY_PREFIX + "NAME",
-            subtitleNameToken = HENRY_PREFIX + "SUBTITLE",
+            bodyName = "KorBody",
+            bodyNameToken = KOR_PREFIX + "NAME",
+            subtitleNameToken = KOR_PREFIX + "SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texHenryIcon"),
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texKorIcon"),
             bodyColor = Color.white,
 
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -33,9 +33,9 @@ namespace KorMod.Modules.Survivors
 
             maxHealth = 110f,
             healthRegen = 1.5f,
-            armor = 0f,
+            armor = 10f,
 
-            jumpCount = 1,
+            jumpCount = 3,
         };
 
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] 
@@ -43,7 +43,7 @@ namespace KorMod.Modules.Survivors
                 new CustomRendererInfo
                 {
                     childName = "SwordModel",
-                    material = Materials.CreateHopooMaterial("matHenry"),
+                    material = Materials.CreateHopooMaterial("matKor"),
                 },
                 new CustomRendererInfo
                 {
@@ -93,8 +93,8 @@ namespace KorMod.Modules.Survivors
 
             #region Primary
             //Creates a skilldef for a typical primary 
-            SkillDef primarySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo(prefix + "_HENRY_BODY_PRIMARY_SLASH_NAME",
-                                                                                      prefix + "_HENRY_BODY_PRIMARY_SLASH_DESCRIPTION",
+            SkillDef primarySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo(prefix + "_KOR_BODY_PRIMARY_SLASH_NAME",
+                                                                                      prefix + "_KOR_BODY_PRIMARY_SLASH_DESCRIPTION",
                                                                                       Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
                                                                                       new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
                                                                                       "Weapon",
@@ -107,9 +107,9 @@ namespace KorMod.Modules.Survivors
             #region Secondary
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillName = prefix + "_KOR_BODY_SECONDARY_GUN_NAME",
+                skillNameToken = prefix + "_KOR_BODY_SECONDARY_GUN_NAME",
+                skillDescriptionToken = prefix + "_KOR_BODY_SECONDARY_GUN_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shoot)),
                 activationStateMachineName = "Slide",
@@ -136,9 +136,9 @@ namespace KorMod.Modules.Survivors
             #region Utility
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_UTILITY_ROLL_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillName = prefix + "_Kor_BODY_UTILITY_ROLL_NAME",
+                skillNameToken = prefix + "_Kor_BODY_UTILITY_ROLL_NAME",
+                skillDescriptionToken = prefix + "_Kor_BODY_UTILITY_ROLL_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
                 activationStateMachineName = "Body",
@@ -164,9 +164,9 @@ namespace KorMod.Modules.Survivors
             #region Special
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",
-                skillNameToken = prefix + "_HENRY_BODY_SPECIAL_BOMB_NAME",
-                skillDescriptionToken = prefix + "_HENRY_BODY_SPECIAL_BOMB_DESCRIPTION",
+                skillName = prefix + "_KOR_BODY_SPECIAL_BOMB_NAME",
+                skillNameToken = prefix + "_KOR_BODY_SPECIAL_BOMB_NAME",
+                skillDescriptionToken = prefix + "_KOR_BODY_SPECIAL_BOMB_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ThrowBomb)),
                 activationStateMachineName = "Slide",
@@ -201,7 +201,7 @@ namespace KorMod.Modules.Survivors
 
             #region DefaultSkin
             //this creates a SkinDef with all default fields
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(HENRY_PREFIX + "DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(KOR_PREFIX + "DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
@@ -209,9 +209,9 @@ namespace KorMod.Modules.Survivors
             //these are your Mesh Replacements. The order here is based on your CustomRendererInfos from earlier
             //pass in meshes as they are named in your assetbundle
             //defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
-            //    "meshHenrySword",
-            //    "meshHenryGun",
-            //    "meshHenry");
+            //    "meshKorSword",
+            //    "meshKorGun",
+            //    "meshKor");
 
             //add new skindef to our list of skindefs. this is what we'll be passing to the SkinController
             skins.Add(defaultSkin);
@@ -221,7 +221,7 @@ namespace KorMod.Modules.Survivors
             #region MasterySkin
             /*
             //creating a new skindef as we did before
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(HenryPlugin.DEVELOPER_PREFIX + "_HENRY_BODY_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(KorPlugin.DEVELOPER_PREFIX + "_Kor_BODY_MASTERY_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject,
@@ -230,15 +230,15 @@ namespace KorMod.Modules.Survivors
             //adding the mesh replacements as above. 
             //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
-                "meshHenrySwordAlt",
+                "meshKorSwordAlt",
                 null,//no gun mesh replacement. use same gun mesh
-                "meshHenryAlt");
+                "meshKorAlt");
 
             //masterySkin has a new set of RendererInfos (based on default rendererinfos)
             //you can simply access the RendererInfos defaultMaterials and set them to the new materials for your skin.
-            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
-            masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
-            masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
+            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matKorAlt");
+            masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matKorAlt");
+            masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matKorAlt");
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
             masterySkin.gameObjectActivations = new SkinDef.GameObjectActivation[]

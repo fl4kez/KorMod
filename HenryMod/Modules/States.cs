@@ -1,9 +1,9 @@
-﻿using HenryMod.SkillStates;
-using HenryMod.SkillStates.BaseStates;
+﻿using KorMod.SkillStates;
+using KorMod.SkillStates.BaseStates;
 using System.Collections.Generic;
 using System;
 
-namespace HenryMod.Modules
+namespace KorMod.Modules
 {
     public static class States
     {

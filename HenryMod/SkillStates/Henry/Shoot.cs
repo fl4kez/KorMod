@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.SkillStates
+namespace KorMod.SkillStates
 {
     public class Shoot : BaseSkillState
     {
@@ -43,7 +43,7 @@ namespace HenryMod.SkillStates
 
                 base.characterBody.AddSpreadBloom(1.5f);
                 EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
-                Util.PlaySound("HenryShootPistol", base.gameObject);
+                Util.PlaySound("KorShootPistol", base.gameObject);
 
                 if (base.isAuthority)
                 {

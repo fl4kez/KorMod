@@ -1,0 +1,12 @@
+----KOR-----
+Primary:
+ - 
+ 
+Secondary:
+ - 
+ 
+Utility: 
+ - Dodge: Move fast in pressed direction (space for up). If an enemy has been hit in the last second you will chase dodge (further and faster)
+ 
+Special:
+ - 

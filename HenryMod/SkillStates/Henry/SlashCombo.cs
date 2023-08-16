@@ -1,8 +1,8 @@
-﻿using HenryMod.SkillStates.BaseStates;
+﻿using KorMod.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.SkillStates
+namespace KorMod.SkillStates
 {
     public class SlashCombo : BaseMeleeAttack
     {
@@ -23,7 +23,7 @@ namespace HenryMod.SkillStates
             this.attackRecoil = 0.5f;
             this.hitHopVelocity = 4f;
 
-            this.swingSoundString = "HenrySwordSwing";
+            this.swingSoundString = "KorSwordSwing";
             this.hitSoundString = "";
             this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
