@@ -1,12 +1,19 @@
 ----KOR-----
 Primary:
- - 
+ - Hammer Weapon Throw: Throws a hammer. (slower but more dmg)
+ - Gauntlet Weapon Throw: Throws a pair of gauntlets. (less dmg but not as slow)
+ - Different attacks based on directional input meaning:
+	- Forward/Side = SLight/SAir
+	- No Input/Jump = NLight/NAir
+	- Down = DLight/DAir
  
 Secondary:
- - 
+ - (Kor Gauntlet Side B)"Yeet": Grab infront of you and YEET the enemy away.
+ - (Kor Hammer Side B)"Bonk": BONK everything infront of you with your hammer.
  
 Utility: 
- - Dodge: Move fast in pressed direction (space for up). If an enemy has been hit in the last second you will chase dodge (further and faster)
- 
+ - Dodge: Move fast in pressed direction (space for up). If an enemy has been hit in the last second you will chase dodge (further and faster). <style=isUtility>You cannot be hit during the dodge</style>
+	(dodge goes through enemies)
 Special:
- - 
+ - (Kor Hammer Down B)"The Rolling Stones": Curl up to a boulder and BONK at the end.
+ - (Kor Gauntlet Down B)"Ko(r)ake": Hit the ground so strong it shatters.

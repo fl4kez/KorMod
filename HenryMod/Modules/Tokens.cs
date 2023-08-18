@@ -49,6 +49,10 @@ namespace KorMod.Modules
             #region Utility
             LanguageAPI.Add(prefix + "UTILITY_ROLL_NAME", "Roll");
             LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION", "Roll a short distance, gaining <style=cIsUtility>300 armor</style>. <style=cIsUtility>You cannot be hit during the roll.</style>");
+
+            LanguageAPI.Add(prefix + "UTILITY_DODGE_NAME", "Dodge");
+            LanguageAPI.Add(prefix + "UTILITY_DODGE_DESCRIPTION", "Move fast in pressed direction (space for up). If an enemy has been hit in the last second you will chase dodge (further and faster). <style=cIsUtility>You cannot be hit during the dodge</style>");
+
             #endregion
 
             #region Special

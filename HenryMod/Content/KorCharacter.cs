@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using KorMod.Modules.Characters;
+using On.RoR2.Stats;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -71,6 +72,8 @@ namespace KorMod.Modules.Survivors
             base.InitializeCharacter();
         }
 
+        
+
         public override void InitializeUnlockables()
         {
             //uncomment this when you have a mastery skin. when you do, make sure you have an icon too
@@ -134,13 +137,38 @@ namespace KorMod.Modules.Survivors
             #endregion
 
             #region Utility
-            SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            //SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            //{
+            //    skillName = prefix + "_KOR_BODY_UTILITY_ROLL_NAME",
+            //    skillNameToken = prefix + "_KOR_BODY_UTILITY_ROLL_NAME",
+            //    skillDescriptionToken = prefix + "_KOR_BODY_UTILITY_ROLL_DESCRIPTION",
+            //    skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+            //    activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
+            //    activationStateMachineName = "Body",
+            //    baseMaxStock = 1,
+            //    baseRechargeInterval = 4f,
+            //    beginSkillCooldownOnSkillEnd = false,
+            //    canceledFromSprinting = false,
+            //    forceSprintDuringState = true,
+            //    fullRestockOnAssign = true,
+            //    interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+            //    resetCooldownTimerOnUse = false,
+            //    isCombatSkill = false,
+            //    mustKeyPress = false,
+            //    cancelSprintingOnActivation = false,
+            //    rechargeStock = 1,
+            //    requiredStock = 1,
+            //    stockToConsume = 1
+            //});
+
+            //Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
+            SkillDef dodgeSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_Kor_BODY_UTILITY_ROLL_NAME",
-                skillNameToken = prefix + "_Kor_BODY_UTILITY_ROLL_NAME",
-                skillDescriptionToken = prefix + "_Kor_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillName = prefix + "_KOR_BODY_UTILITY_DODGE_NAME",
+                skillNameToken = prefix + "_KOR_BODY_UTILITY_DODGE_NAME",
+                skillDescriptionToken = prefix + "_KOR_BODY_UTILITY_DODGE_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Kor.Dodge)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
                 baseRechargeInterval = 4f,
@@ -158,7 +186,7 @@ namespace KorMod.Modules.Survivors
                 stockToConsume = 1
             });
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
+            Modules.Skills.AddUtilitySkills(bodyPrefab, dodgeSkillDef);
             #endregion
 
             #region Special
@@ -257,5 +285,6 @@ namespace KorMod.Modules.Survivors
 
             skinController.skins = skins.ToArray();
         }
+
     }
 }
