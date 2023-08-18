@@ -66,31 +66,6 @@ namespace KorMod
         {
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
-        }
-
-
-        public static bool enemyHitAgo;
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
-        {
-            orig(self,damageInfo);
-
-            //Check if you were attacker
-            Chat.AddMessage($"Attacker: {damageInfo.attacker.name} HIT {self.gameObject.name}");
-            Chat.AddMessage($"Bonus: {self.body.gameObject}");
-            if(damageInfo.attacker == self.gameObject)
-            {
-                if (enemyHitAgo == true)
-                    StopCoroutine(EnemyHitAgo());
-                StartCoroutine(EnemyHitAgo());
-            }
-        }
-        
-        IEnumerator EnemyHitAgo()
-        {
-            enemyHitAgo = true;
-            yield return new WaitForSeconds(1);
-            enemyHitAgo = false;
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

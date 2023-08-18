@@ -70,6 +70,7 @@ namespace KorMod.Modules.Survivors
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            base.prefabCharacterBody.gameObject.AddComponent<OnDamageDealt>();
         }
 
         
@@ -171,7 +172,7 @@ namespace KorMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Kor.Dodge)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
-                baseRechargeInterval = 4f,
+                baseRechargeInterval = 2.5f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,

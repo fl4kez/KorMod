@@ -2,6 +2,7 @@
 using KorMod.SkillStates.BaseStates;
 using System.Collections.Generic;
 using System;
+using KorMod.SkillStates.Kor;
 
 namespace KorMod.Modules
 {
@@ -17,6 +18,10 @@ namespace KorMod.Modules
             Modules.Content.AddEntityState(typeof(Roll));
 
             Modules.Content.AddEntityState(typeof(ThrowBomb));
+
+            //KOR
+            Content.AddEntityState(typeof(Dodge));
+            Content.AddEntityState(typeof(HammerThrow));
         }
     }
 }
